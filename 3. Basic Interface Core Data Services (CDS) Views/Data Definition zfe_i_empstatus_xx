@@ -1,0 +1,13 @@
+@AbapCatalog.sqlViewName: 'ZFEIEMPSTATUSXX'
+@EndUserText.label: 'Employee Status Basic Interface View for FE Demo'
+@VDM.viewType: #BASIC
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+
+define view zfe_i_empstatus_xx
+  as select from zfe_empstatus_xx
+{
+      //zfe_empstatus_xx
+  key status,
+      @Semantics.text: true
+      statustext
+}

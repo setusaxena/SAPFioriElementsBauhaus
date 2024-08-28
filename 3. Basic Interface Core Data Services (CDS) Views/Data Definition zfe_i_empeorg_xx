@@ -1,0 +1,24 @@
+@AbapCatalog.sqlViewName: 'ZFEIEMPORGXX'
+@EndUserText.label: 'Employee Organization Basic Interface View for FE Demo'
+@VDM.viewType: #BASIC
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@Analytics.dataCategory: #DIMENSION
+@Metadata.allowExtensions: true
+
+define view zfe_i_empeorg_xx
+  as select from zfe_empeorg_xx
+{
+      //zfe_empeorg_xx
+  key org          as Org,
+      @Semantics.text: true
+      @Semantics.name.fullName: true
+      description  as Description,
+      @Semantics: {
+        eMail.address: true,
+        eMail.type:  [ #WORK ]
+        }
+      emailaddress as EmailAddress,
+      @Semantics.telephone.type:  [ #WORK ]
+      phonenumber  as PhoneNumber,
+      manager      as Manager
+}

@@ -1,0 +1,64 @@
+@AbapCatalog.sqlViewName: 'ZFEIEMPSRVSXX'
+@EndUserText.label: 'Employee Services Basic Interface View for FE Demo'
+@VDM.viewType:#BASIC
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+
+define view zfe_i_empservices_xx
+  as select from zfe_empserv_xx
+  association [1..1] to zfe_i_employee_xx       as _Employee        on $projection.Employee = _Employee.Employee
+  association [0..1] to zfe_i_servicesstatus_xx as _ExpenseStatus   on $projection.expense_status = _ExpenseStatus.status
+  association [0..1] to I_UnitOfMeasure         as _SOUnitOfMeasure on $projection.so_units = _SOUnitOfMeasure.UnitOfMeasure
+  association [0..1] to I_Currency              as _Currency        on $projection.Currency = _Currency.Currency
+{
+      //zfe_empserv_xx
+  key serviceorder_id                           as Serviceorder,
+  key employee_id                               as Employee,
+      customername                              as CustomerName,
+      location                                  as Location,
+      service_description                       as ServiceDescription,
+      @Semantics.quantity.unitOfMeasure: 'SOUnits'
+      //@DefaultAggregation: #NONE
+      so_total                                  as SOTotal,
+      @Semantics.quantity.unitOfMeasure: 'SOUnits'
+      //@DefaultAggregation: #NONE
+      so_onsite                                 as SOOnsite,
+      @Semantics.quantity.unitOfMeasure: 'SOUnits'
+      //@DefaultAggregation: #NONE
+      so_remote                                 as SORemote,
+      @Semantics.unitOfMeasure: true
+      so_units                                  as SOUnits,
+      customer_rating                           as CustomerRating,
+      @Semantics.imageUrl: true
+      customer_image                            as CustomerImage,
+
+      @Semantics.amount.currencyCode: 'Currency'
+      //@DefaultAggregation: #NONE
+      expenses                                  as Expenses,
+      @Semantics.currencyCode: true
+      currency                                  as Currency,
+      expense_status                            as ExpenseStatus,
+      //Calculated Field
+      @Semantics.amount.currencyCode: 'Currency'
+      //@DefaultAggregation: #NONE
+      cast((so_onsite * 110) as abap.dec(11,2)) as OnSiteBonus,
+      @Semantics.amount.currencyCode: 'Currency'
+      //@DefaultAggregation: #NONE
+      cast((so_total * 50) as abap.dec(11,2))   as TotalPerdiem,
+
+      //Admin fields
+      @Semantics.user.createdBy: true
+      created_by                                as CreatedBy,
+      @Semantics.systemDateTime.createdAt: true
+      created_at                                as CreatedAt,
+      @Semantics.user.lastChangedBy: true
+      last_changed_by                           as LastChangedBy,
+      @Semantics.systemDateTime.lastChangedAt: true
+      last_changed_at                           as LastChangedAt,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
+      local_last_changed_at                     as LocalLastChangedAt,
+      //ASSOCIATIONS
+      _Employee,
+      _SOUnitOfMeasure,
+      _Currency,
+      _ExpenseStatus
+}

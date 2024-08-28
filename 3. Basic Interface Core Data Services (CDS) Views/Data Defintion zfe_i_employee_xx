@@ -1,0 +1,53 @@
+@AbapCatalog.sqlViewName: 'ZFEIEMPLOYEEXX'
+@EndUserText.label: 'Employee Basic Interface View for FE Demo'
+@VDM.viewType: #BASIC
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+
+define view zfe_i_employee_xx
+  as select from zfe_employee_xx
+  association [0..*] to zfe_i_empservices_xx as _EmpServices on $projection.Employee = _EmpServices.Employee
+  association [1..1] to zfe_i_empstatus_xx   as _Status      on $projection.status = _Status.status
+  association [0..1] to zfe_i_empeorg_xx     as _Org         on $projection.organization = _Org.Org
+{
+      @EndUserText.label: 'Employee Number'
+  key employee_id           as Employee,
+
+      @Semantics.text: true
+      first_name,
+      @Semantics.text: true
+      middle_name,
+      @Semantics.text: true
+      last_name,
+      @Semantics.text: true
+      salutation,
+      @Semantics.imageUrl: true
+      employee_image,
+      organization          as organization,
+      status,
+      cat_compliance,
+      @Semantics.telephone.type:  [ #WORK ]
+      contact,
+      @Semantics: {
+        eMail.address: true,
+        eMail.type:  [ #WORK ]
+        }
+      email_address,
+
+      //Admin fields
+      @Semantics.user.createdBy: true
+      created_by            as CreatedBy,
+      @Semantics.systemDateTime.createdAt: true
+      created_at            as CreatedAt,
+      @Semantics.user.lastChangedBy: true
+      last_changed_by       as LastChangedBy,
+      @Semantics.systemDateTime.lastChangedAt: true
+      last_changed_at       as LastChangedAt,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
+      local_last_changed_at as LocalLastChangedAt,
+
+      //ASSOCIATION
+      _EmpServices,
+      //      _EmpServices.expense_status as expense_status,
+      _Status,
+      _Org
+}
