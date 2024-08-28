@@ -1,0 +1,10 @@
+@EndUserText.label : 'Employee Status Table for FE Demo'
+@AbapCatalog.enhancementCategory : #EXTENSIBLE_ANY
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #ALLOWED
+define table zfe_empstatus_xx {
+  key client : abap.clnt not null;
+  key status : abap.char(1) not null;
+  statustext : abap.char(32);
+}

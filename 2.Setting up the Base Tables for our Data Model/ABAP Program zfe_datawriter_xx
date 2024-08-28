@@ -1,0 +1,546 @@
+*&---------------------------------------------------------------------*
+*& Report zfe_datawriter_xx
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT zfe_datawriter_xx.
+
+" Data Feeder Report for FE Demo
+
+
+DELETE FROM zfe_empserv_xx.
+DELETE FROM zfe_employee_xx.
+DELETE FROM zfe_empeorg_xx.
+DELETE FROM zfe_empstatus_xx.
+DELETE FROM zfe_servstat_xx.
+
+DATA : lt_zfe_employee_xx    TYPE TABLE OF zfe_employee_xx,
+       lt_zfe_empserv_xx TYPE TABLE OF zfe_empserv_xx,
+       lt_zfe_empeorg_xx    TYPE TABLE OF zfe_empeorg_xx,
+       lt_zfe_empstatus_xx TYPE TABLE OF zfe_empstatus_xx,
+       lt_zfe_servstat_xx TYPE TABLE OF zfe_servstat_xx,
+       ls_zfe_employee_xx    TYPE zfe_employee_xx,
+       ls_zfe_empserv_xx TYPE zfe_empserv_xx,
+       ls_zfe_empeorg_xx    TYPE zfe_empeorg_xx,
+       ls_zfe_empstatus_xx TYPE zfe_empstatus_xx,
+       ls_zfe_servstat_xx TYPE zfe_servstat_xx.
+
+"Populating the employee data first
+clear : ls_zfe_employee_xx, lt_zfe_employee_xx.
+
+"Populating the employee service data
+clear : ls_zfe_empserv_xx , lt_zfe_empserv_xx.
+
+*ls_zfe_empserv_xx-serviceorder_id = ''.
+*ls_zfe_empserv_xx-employee_id = ''.
+*ls_zfe_empserv_xx-customername = ''.
+*ls_zfe_empserv_xx-location = ''.
+*ls_zfe_empserv_xx-service_description = ''.
+*ls_zfe_empserv_xx-so_total = ''.
+*ls_zfe_empserv_xx-so_onsite = ''.
+*ls_zfe_empserv_xx-so_remote = ''.
+*ls_zfe_empserv_xx-customer_rating = ''.
+*ls_zfe_empserv_xx-customer_image = ''.
+*ls_zfe_empserv_xx-date_start = ''.
+*ls_zfe_empserv_xx-date_end = ''.
+*ls_zfe_empserv_xx-crea_date_time = ''.
+*ls_zfe_empserv_xx-crea_uname = ''.
+*ls_zfe_empserv_xx-lchg_date_time = ''.
+*ls_zfe_empserv_xx-lchg_uname = ''.
+*ls_zfe_empserv_xx-expenses = ''.
+*ls_zfe_empserv_xx-expense_status = '1'.
+*ls_zfe_empserv_xx-currency = ''.
+*APPEND ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+*MODIFY zfe_empserv_xx from table lt_zfe_empserv_xx.
+
+
+
+************************************************NEW DATA****************************************
+************************************************NEW DATA****************************************
+************************************************NEW DATA****************************************
+************************************************NEW DATA****************************************
+************************************************NEW DATA****************************************
+************************************************NEW DATA****************************************
+
+
+clear : lt_zfe_employee_xx, ls_zfe_employee_xx.
+
+ls_zfe_employee_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550001'.
+ls_zfe_employee_xx-first_name = 'Niall'.
+ls_zfe_employee_xx-middle_name = ''.
+ls_zfe_employee_xx-last_name = 'Brennan'.
+ls_zfe_employee_xx-salutation = 'Mr'.
+ls_zfe_employee_xx-employee_image = '/images/Rob.jpg'.
+ls_zfe_employee_xx-organization = 'MOB'.
+ls_zfe_employee_xx-status = '3'.
+ls_zfe_employee_xx-cat_compliance = ''.
+ls_zfe_employee_xx-contact = '+1 234 567 890'.
+ls_zfe_employee_xx-email_address = 'niall.brennan@dummy'.
+Append ls_zfe_employee_xx to lt_zfe_employee_xx.
+Clear ls_zfe_employee_xx.
+
+
+ls_zfe_employee_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550002'.
+ls_zfe_employee_xx-first_name = 'Ithihas'.
+ls_zfe_employee_xx-middle_name = 'Thottunkal'.
+ls_zfe_employee_xx-last_name = 'Haridas'.
+ls_zfe_employee_xx-salutation = 'Mr'.
+ls_zfe_employee_xx-employee_image = '/images/Rob.jpg'.
+ls_zfe_employee_xx-organization = 'MOB'.
+ls_zfe_employee_xx-status = '3'.
+ls_zfe_employee_xx-cat_compliance = ''.
+ls_zfe_employee_xx-contact = '+1 234 567 890'.
+ls_zfe_employee_xx-email_address = 'ithihas.thottunkal.haridas@dummy'.
+Append ls_zfe_employee_xx to lt_zfe_employee_xx.
+Clear ls_zfe_employee_xx.
+
+ls_zfe_employee_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550003'.
+ls_zfe_employee_xx-first_name = 'Nabajyoti'.
+ls_zfe_employee_xx-middle_name = ''.
+ls_zfe_employee_xx-last_name = 'Chakraborty'.
+ls_zfe_employee_xx-salutation = 'Mr'.
+ls_zfe_employee_xx-employee_image = '/images/Rob.jpg'.
+ls_zfe_employee_xx-organization = 'CAR'.
+ls_zfe_employee_xx-status = '3'.
+ls_zfe_employee_xx-cat_compliance = ''.
+ls_zfe_employee_xx-contact = '+1 234 567 890'.
+ls_zfe_employee_xx-email_address = 'nabajyoti.chakraborty@dummy'.
+Append ls_zfe_employee_xx to lt_zfe_employee_xx.
+Clear ls_zfe_employee_xx.
+
+ls_zfe_employee_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550004'.
+ls_zfe_employee_xx-first_name = 'Anjana'.
+ls_zfe_employee_xx-middle_name = ''.
+ls_zfe_employee_xx-last_name = 'Babu'.
+ls_zfe_employee_xx-salutation = 'Ms'.
+ls_zfe_employee_xx-employee_image = '/images/Rob.jpg'.
+ls_zfe_employee_xx-organization = 'CAR'.
+ls_zfe_employee_xx-status = '3'.
+ls_zfe_employee_xx-cat_compliance = ''.
+ls_zfe_employee_xx-contact = '+1 234 567 890'.
+ls_zfe_employee_xx-email_address = 'anjana.babu@dummy'.
+Append ls_zfe_employee_xx to lt_zfe_employee_xx.
+Clear ls_zfe_employee_xx.
+
+ls_zfe_employee_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550005'.
+ls_zfe_employee_xx-first_name = 'Chandan'.
+ls_zfe_employee_xx-middle_name = ''.
+ls_zfe_employee_xx-last_name = 'Kumar'.
+ls_zfe_employee_xx-salutation = 'Mr'.
+ls_zfe_employee_xx-employee_image = '/images/Rob.jpg'.
+ls_zfe_employee_xx-organization = 'HOU'.
+ls_zfe_employee_xx-status = '3'.
+ls_zfe_employee_xx-cat_compliance = ''.
+ls_zfe_employee_xx-contact = '+1 234 567 890'.
+ls_zfe_employee_xx-email_address = 'chandan.kumar@dummy'.
+Append ls_zfe_employee_xx to lt_zfe_employee_xx.
+Clear ls_zfe_employee_xx.
+
+ls_zfe_employee_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550006'.
+ls_zfe_employee_xx-first_name = 'Rita'.
+ls_zfe_employee_xx-middle_name = ''.
+ls_zfe_employee_xx-last_name = 'Martins'.
+ls_zfe_employee_xx-salutation = 'Ms'.
+ls_zfe_employee_xx-employee_image = '/images/Rob.jpg'.
+ls_zfe_employee_xx-organization = 'HOU'.
+ls_zfe_employee_xx-status = '3'.
+ls_zfe_employee_xx-cat_compliance = ''.
+ls_zfe_employee_xx-contact = '+1 234 567 890'.
+ls_zfe_employee_xx-email_address = 'rita.martins@dummy'.
+Append ls_zfe_employee_xx to lt_zfe_employee_xx.
+Clear ls_zfe_employee_xx.
+
+ls_zfe_employee_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550007'.
+ls_zfe_employee_xx-first_name = 'Bhaskararao'.
+ls_zfe_employee_xx-middle_name = ''.
+ls_zfe_employee_xx-last_name = 'Kammela'.
+ls_zfe_employee_xx-salutation = 'Mr'.
+ls_zfe_employee_xx-employee_image = '/images/Rob.jpg'.
+ls_zfe_employee_xx-organization = 'HOU'.
+ls_zfe_employee_xx-status = '3'.
+ls_zfe_employee_xx-cat_compliance = ''.
+ls_zfe_employee_xx-contact = '+1 234 567 890'.
+ls_zfe_employee_xx-email_address = 'bhaskararao.kammela@dummy'.
+Append ls_zfe_employee_xx to lt_zfe_employee_xx.
+Clear ls_zfe_employee_xx.
+
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55511111'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550001'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Field Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '8'.
+ls_zfe_empserv_xx-so_remote = '2'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2764'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55522222'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550001'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Repair Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '0'.
+ls_zfe_empserv_xx-so_remote = '10'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2763'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55533333'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550002'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Field Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '8'.
+ls_zfe_empserv_xx-so_remote = '2'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2764'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55544444'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550002'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Repair Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '0'.
+ls_zfe_empserv_xx-so_remote = '10'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2763'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55555555'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550003'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Field Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '8'.
+ls_zfe_empserv_xx-so_remote = '2'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2764'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55566666'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550003'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Repair Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '0'.
+ls_zfe_empserv_xx-so_remote = '10'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2763'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55577777'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550004'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Field Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '8'.
+ls_zfe_empserv_xx-so_remote = '2'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2764'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55588888'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550004'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Repair Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '0'.
+ls_zfe_empserv_xx-so_remote = '10'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2763'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F55599999'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550005'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Field Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '8'.
+ls_zfe_empserv_xx-so_remote = '2'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2764'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F5510000'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550005'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Repair Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '0'.
+ls_zfe_empserv_xx-so_remote = '10'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2763'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F5520001'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550006'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Field Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '8'.
+ls_zfe_empserv_xx-so_remote = '2'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2764'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F5520000'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550006'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Repair Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '0'.
+ls_zfe_empserv_xx-so_remote = '10'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2763'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'NOK'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F5530234'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550007'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Repair Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '0'.
+ls_zfe_empserv_xx-so_remote = '10'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2763'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'EUR'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+ls_zfe_empserv_xx-serviceorder_id = 'D0000CCA4ADF1EEF98E69F35F5543430'.
+ls_zfe_empserv_xx-employee_id = 'D9598CCA4ADF1EEF98E69F35F5550007'.
+ls_zfe_empserv_xx-customername = 'Dummy Company'.
+ls_zfe_empserv_xx-location = 'Norway'.
+ls_zfe_empserv_xx-service_description = 'Repair Work'.
+ls_zfe_empserv_xx-so_total = '10'.
+ls_zfe_empserv_xx-so_onsite = '0'.
+ls_zfe_empserv_xx-so_remote = '10'.
+ls_zfe_empserv_xx-customer_rating = '5'.
+ls_zfe_empserv_xx-customer_image = '/images/cocacola.gif'..
+ls_zfe_empserv_xx-date_start = '20190109'.
+ls_zfe_empserv_xx-date_end = '20190119'.
+ls_zfe_empserv_xx-crea_date_time = ''.
+ls_zfe_empserv_xx-crea_uname = ''.
+ls_zfe_empserv_xx-lchg_date_time = ''.
+ls_zfe_empserv_xx-lchg_uname = ''.
+ls_zfe_empserv_xx-expenses = '2763'.
+ls_zfe_empserv_xx-expense_status = '1'.
+ls_zfe_empserv_xx-currency = 'EUR'.
+Append ls_zfe_empserv_xx to lt_zfe_empserv_xx.
+Clear ls_zfe_empserv_xx.
+
+clear : ls_zfe_servstat_xx, lt_zfe_servstat_xx.
+
+ls_zfe_servstat_xx-status = '1'.
+ls_zfe_servstat_xx-statustext = 'Created'.
+APPEND ls_zfe_servstat_xx to lt_zfe_servstat_xx.
+clear ls_zfe_servstat_xx.
+
+ls_zfe_servstat_xx-status = '2'.
+ls_zfe_servstat_xx-statustext = 'Approved'.
+APPEND ls_zfe_servstat_xx to lt_zfe_servstat_xx.
+clear ls_zfe_servstat_xx.
+
+ls_zfe_servstat_xx-status = '3'.
+ls_zfe_servstat_xx-statustext = 'Closed'.
+APPEND ls_zfe_servstat_xx to lt_zfe_servstat_xx.
+clear ls_zfe_servstat_xx.
+
+clear : ls_zfe_empstatus_xx, lt_zfe_empstatus_xx.
+
+ls_zfe_empstatus_xx-status = '3'.
+ls_zfe_empstatus_xx-statustext = 'Available'.
+APPEND ls_zfe_empstatus_xx to lt_zfe_empstatus_xx.
+clear ls_zfe_empstatus_xx.
+
+ls_zfe_empstatus_xx-status = '1'.
+ls_zfe_empstatus_xx-statustext = 'Tentative Service'.
+APPEND ls_zfe_empstatus_xx to lt_zfe_empstatus_xx.
+clear ls_zfe_empstatus_xx.
+
+ls_zfe_empstatus_xx-status = '2'.
+ls_zfe_empstatus_xx-statustext = 'Occupied'.
+APPEND ls_zfe_empstatus_xx to lt_zfe_empstatus_xx.
+clear ls_zfe_empstatus_xx.
+
+
+clear : ls_zfe_empeorg_xx.
+ls_zfe_empeorg_xx-org = 'MOB'.
+ls_zfe_empeorg_xx-description = 'Mobile Repair'.
+ls_zfe_empeorg_xx-emailaddress = 'mobileservices@dummy'.
+ls_zfe_empeorg_xx-phonenumber = '+1 234 567 890'.
+ls_zfe_empeorg_xx-manager = 'Mr Mobile'.
+APPEND ls_zfe_empeorg_xx to lt_zfe_empeorg_xx.
+
+Clear ls_zfe_empeorg_xx.
+ls_zfe_empeorg_xx-org = 'CAR'.
+ls_zfe_empeorg_xx-description = 'Car Repair'.
+ls_zfe_empeorg_xx-emailaddress = 'carervices@dummy'.
+ls_zfe_empeorg_xx-phonenumber = '+1 234 567 890'.
+ls_zfe_empeorg_xx-manager = 'Mr Car'.
+APPEND ls_zfe_empeorg_xx to lt_zfe_empeorg_xx.
+
+Clear ls_zfe_empeorg_xx.
+ls_zfe_empeorg_xx-org = 'HOU'.
+ls_zfe_empeorg_xx-description = 'House Repairs'.
+ls_zfe_empeorg_xx-emailaddress = 'houseservices@dummy'.
+ls_zfe_empeorg_xx-phonenumber = '+1 234 567 890'.
+ls_zfe_empeorg_xx-manager = 'Mr House'.
+APPEND ls_zfe_empeorg_xx to lt_zfe_empeorg_xx.
+
+
+delete from zfe_empeorg_xx.
+delete from zfe_empserv_xx.
+delete from zfe_empstatus_xx.
+delete from zfe_empeorg_xx.
+delete from zfe_employee_xx.
+
+MODIFY zfe_employee_xx from table LT_zfe_employee_xx.
+MODIFY zfe_empserv_xx from table lt_zfe_empserv_xx.
+MODIFY zfe_servstat_xx from table lt_zfe_servstat_xx.
+MODIFY zfe_empstatus_xx from table lt_zfe_empstatus_xx.
+MODIFY zfe_empeorg_xx  from table lt_zfe_empeorg_xx.

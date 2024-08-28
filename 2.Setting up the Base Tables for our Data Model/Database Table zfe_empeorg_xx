@@ -1,0 +1,12 @@
+@EndUserText.label : 'Employee Organization Table for FE Demo'
+@AbapCatalog.enhancementCategory : #EXTENSIBLE_ANY
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #ALLOWED
+define table zfe_empeorg_xx {
+  key org      : abap.char(4) not null;
+  description  : abap.char(128);
+  emailaddress : abap.char(255);
+  phonenumber  : abap.char(30);
+  manager      : abap.char(128);
+}
