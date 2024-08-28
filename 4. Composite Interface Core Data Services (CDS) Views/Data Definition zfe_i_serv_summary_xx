@@ -1,0 +1,31 @@
+@AbapCatalog.sqlViewName: 'ZFEIEMPSRVSUMXX'
+@EndUserText.label: 'Emp Services Summary Composite Interface View for FE Demo'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+
+define view zfe_i_serv_summary_xx
+  as select from zfe_i_empservices_xx
+{
+  key Employee,
+
+      @Semantics.amount.currencyCode: 'Currency'
+      @DefaultAggregation: #NONE
+      cast( sum( OnSiteBonus) as abap.dec(11,2) )    as OverallBonus,
+
+      @Semantics.amount.currencyCode: 'Currency'
+      @DefaultAggregation: #NONE
+      cast( sum( TotalPerdiem )  as abap.dec(11,2) ) as OverallPerdiem,
+
+      currency                                       as Currency,
+
+      @DefaultAggregation: #NONE
+      avg( CustomerRating as abap.dec(1,0) )         as OverallCustomerRating,
+
+      @DefaultAggregation: #COUNT
+      count(*)                                       as TotalServices
+}
+group by
+  Employee,
+  employee,
+  currency
