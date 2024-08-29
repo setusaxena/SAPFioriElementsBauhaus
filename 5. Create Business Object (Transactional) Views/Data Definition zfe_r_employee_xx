@@ -1,0 +1,72 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Employee Transactional View for FE Demo'
+define root view entity zfe_r_employee_xx
+  as select from zfe_i_employee_xx
+  composition [0..*] of zfe_r_empservices_xx  as _EmpServices
+
+  association [0..1] to zfe_i_serv_summary_xx as _EmpSummary on $projection.Employee = _EmpSummary.Employee
+  association [1..1] to zfe_i_empstatus_xx    as _Status     on $projection.Status = _Status.status
+  association [0..1] to zfe_i_empeorg_xx      as _Org        on $projection.Organization = _Org.Org
+{
+
+      @EndUserText.label: 'Employee Number'
+  key Employee,
+      @Semantics.text: true
+      first_name           as FirstName,
+      @Semantics.text: true
+      middle_name          as MiddleName,
+      @Semantics.text: true
+      last_name            as LastName,
+      @Semantics.text: true
+      salutation           as Salutation,
+      @Semantics.imageUrl: true
+      employee_image       as EmployeeImage,
+      organization         as Organization,
+      status               as Status,
+      cat_compliance       as CatCompliance,
+      @Semantics.telephone.type:  [ #WORK ]
+      contact              as Contact,
+      @Semantics: {
+        eMail.address: true,
+        eMail.type:  [ #WORK ]
+        }
+      email_address        as EmailAddress,
+
+      @Semantics.amount.currencyCode: 'Currency'
+      _EmpSummary.OverallBonus,
+
+      @Semantics.amount.currencyCode: 'Currency'
+      _EmpSummary.OverallPerdiem,
+
+      _EmpSummary.Currency as Currency,
+
+      _EmpSummary.OverallCustomerRating,
+
+      _EmpSummary.TotalServices,
+
+      case
+        when _EmpSummary.OverallCustomerRating > 0
+        and _EmpSummary.OverallCustomerRating < 2
+        then 1
+        when _EmpSummary.OverallCustomerRating >= 2
+        and cast( _EmpSummary.OverallCustomerRating as abap.dec(3,2) ) <= 3.75
+        then 2
+        when cast( _EmpSummary.OverallCustomerRating as abap.dec(3,2) ) > 3.75 then 3
+        else 0
+      end                  as CustomerRatingCriticality,
+
+      //      _EmpServices.expense_status as expense_status,
+
+      //Admin fields
+      CreatedBy,
+      CreatedAt,
+      LastChangedBy,
+      LastChangedAt,
+      LocalLastChangedAt,
+
+      //ASSOCIATION
+      _EmpServices,
+      _Status,
+      _Org
+
+}

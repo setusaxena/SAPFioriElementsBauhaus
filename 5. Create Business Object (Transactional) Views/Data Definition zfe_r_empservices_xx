@@ -1,0 +1,33 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Employee Services Transactional View for FE Demo'
+define view entity zfe_r_empservices_xx
+  as select from zfe_i_empservices_xx
+  association to parent zfe_r_employee_xx as _Employee on $projection.Employee = _Employee.Employee
+{
+  key Serviceorder,
+  key Employee,
+      CustomerName,
+      Location,
+      ServiceDescription,
+      SOTotal,
+      SOOnsite,
+      SORemote,
+      SOUnits,
+      CustomerRating,
+      CustomerImage,
+      Expenses,
+      Currency,
+      ExpenseStatus,
+      OnSiteBonus,
+      TotalPerdiem,
+      CreatedBy,
+      CreatedAt,
+      LastChangedBy,
+      LastChangedAt,
+      LocalLastChangedAt,
+      /* Associations */
+      _Currency,
+      _Employee,
+      _ExpenseStatus,
+      _SOUnitOfMeasure
+}
