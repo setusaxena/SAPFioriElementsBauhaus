@@ -7,7 +7,7 @@ Composite interface views combine multiple basic interface views or other compos
 :bulb: Composite interface views have the annotation **@VDM.viewType: #COMPOSITE**
 
 <br><br>
-## As a part of this step, we shall be creating our Composie Interface Core Data Services (CDS) Views
+## As a part of this step, we shall be creating our Business Object (Transactional) Views
 :warning:**Please note**: the number **xx** represents the assigned serial number to you.</span>
 
 ### Transactional views to Be Created:
