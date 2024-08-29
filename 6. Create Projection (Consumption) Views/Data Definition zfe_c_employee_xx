@@ -1,0 +1,29 @@
+@EndUserText.label: 'Employee Projection View for FE Demo'
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+define root view entity zfe_c_employee_xx
+  as projection on zfe_r_employee_xx
+{
+  key Employee,
+      FirstName,
+      MiddleName,
+      LastName,
+      Salutation,
+      EmployeeImage,
+      Organization,
+      Status,
+      CatCompliance,
+      Contact,
+      EmailAddress,
+      CustomerRatingCriticality,
+      OverallCustomerRating,
+      OverallBonus,
+      OverallPerdiem,
+      Currency,
+      TotalServices,
+      LocalLastChangedAt,
+
+      /* Associations */
+      _EmpServices : redirected to composition child zfe_c_empservices_xx,
+      _Org,
+      _Status
+}

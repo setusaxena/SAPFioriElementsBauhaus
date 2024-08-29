@@ -1,0 +1,32 @@
+@EndUserText.label: 'Employee Services Projection View for FE Demo'
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+define view entity zfe_c_empservices_xx
+  as projection on zfe_r_empservices_xx
+{
+  key Serviceorder,
+  key Employee,
+      CustomerName,
+      Location,
+      ServiceDescription,
+      SOTotal,
+      SOOnsite,
+      SORemote,
+      SOUnits,
+      CustomerRating,
+      CustomerImage,
+      Expenses,
+      Currency,
+      ExpenseStatus,
+      OnSiteBonus,
+      TotalPerdiem,
+      CreatedBy,
+      CreatedAt,
+      LastChangedBy,
+      LastChangedAt,
+      LocalLastChangedAt,
+      /* Associations */
+      _Currency,
+      _Employee : redirected to parent zfe_c_employee_xx,
+      _ExpenseStatus,
+      _SOUnitOfMeasure
+}
