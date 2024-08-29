@@ -1,0 +1,7 @@
+@EndUserText.label: 'Service Definition for FE Demo'
+define service zui_c_employee_services_xx {
+  expose zfe_c_employee_xx    as Employee;
+  expose zfe_c_empservices_xx as EmployeeServices;
+  expose zfe_i_empstatus_xx   as EmpStatus;
+  expose zfe_i_empeorg_xx     as EmpOrg;
+}
