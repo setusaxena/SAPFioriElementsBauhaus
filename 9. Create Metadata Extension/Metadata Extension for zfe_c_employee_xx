@@ -1,0 +1,180 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+         title: {
+            value: 'Employee',
+            type: #STANDARD
+        },
+        description: {
+            value: 'EmailAddress',
+            type: #STANDARD
+        },
+        typeName: 'Employee',
+        typeNamePlural: 'Employees',
+        imageUrl: 'EmployeeImage'
+    }
+}
+annotate view zfe_c_employee_xx with
+{
+  @UI.facet: [
+  {
+    id:        'StatusDataPointFacet',
+    purpose:    #HEADER,
+    type:       #DATAPOINT_REFERENCE,
+    targetQualifier: 'Status'
+  },
+  {
+     id:              'OverallBonusDataPointFacet',
+     purpose:         #HEADER,
+     type:            #DATAPOINT_REFERENCE,
+     targetQualifier: 'OverallBonus'
+   },
+   {
+     id:              'OverallPerdiemDataPointFacet',
+     purpose:         #HEADER,
+     type:            #DATAPOINT_REFERENCE,
+     targetQualifier: 'OverallPerdiem'
+    },
+    {
+      id:              'CustomerRatingDataPointFacet',
+      purpose:         #HEADER,
+      type:            #DATAPOINT_REFERENCE,
+      targetQualifier: 'OverallCustomerRating'
+    },
+    {
+      id:            'OrgContactFacet',
+      label:         'Team',
+      type:          #CONTACT_REFERENCE,
+      purpose:       #HEADER,
+      targetElement: '_Org'
+    },
+
+    //Employee Info Section
+    {
+      id :      'EmployeeInfoCollectionFacet',
+      purpose:  #STANDARD,
+      type:     #COLLECTION,
+      label:    'Employee Info',
+      position: 10
+    },
+
+    //First Field Group - Basic Emp Data
+    {
+        label: 'Basic Info',
+        type:            #FIELDGROUP_REFERENCE,
+        id :             'EmployeeBasicDataReferenceFacet',
+        purpose:         #STANDARD,
+        parentId:        'EmployeeInfoCollectionFacet',
+        targetQualifier: 'BasicInfoFieldGroup'
+    },
+
+      //Secondt Field Group - Employee Contact Data
+      {
+          label: 'Contact Info',
+          type:            #FIELDGROUP_REFERENCE,
+          id :             'EmployeeContactDataReferenceFacet',
+          purpose:         #STANDARD,
+          parentId:        'EmployeeInfoCollectionFacet',
+          targetQualifier: 'ContactInfoFieldGroup'
+
+      },
+
+      //Third Field Group - Services Data
+      {
+          label: 'Service(s) Summary',
+          type:            #FIELDGROUP_REFERENCE,
+          id :             'EmployeeServicesDataReferenceFacet',
+          purpose:         #STANDARD,
+          parentId:        'EmployeeInfoCollectionFacet',
+          targetQualifier: 'ServicesInfoFieldGroup'
+
+      },
+
+    //Items Section
+    {
+      id : 'ServicesInfoLineItemRefFacet',
+      purpose:       #STANDARD,
+      type:          #LINEITEM_REFERENCE,
+      label:         'Services Info',
+      targetElement: '_EmpServices',
+      position: 20
+    }
+  ]
+
+
+  @UI.fieldGroup: [{ qualifier: 'ContactInfoFieldGroup', groupLabel: 'Contact Info' , position: 10, importance: #HIGH }]
+  @EndUserText.label: 'Employee ID'
+  @UI.lineItem: [{ type: #FOR_ACTION,  dataAction: 'updateStatus' , label: 'Update Status' , position: 10 } ]
+  Employee;
+
+  @EndUserText.label: 'Overall Bonus'
+  @UI.dataPoint: { title: 'Overall Bonus' }
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroContactInfoFieldGroupup', position: 10, importance: #HIGH }]
+  OverallBonus;
+
+  @EndUserText.label: 'Overall Perdiem'
+  @UI.dataPoint: { title: 'Overall Per diem' }
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 20, importance: #HIGH }]
+  OverallPerdiem;
+
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 10, importance: #HIGH }]
+  @EndUserText.label: 'Total Services'
+  TotalServices;
+
+  @UI.dataPoint: {  title: 'Overall Customer Rating' , criticality: 'CustomerRatingCriticality'}
+  @EndUserText.label: 'Overall Customer Rating'
+  @UI.lineItem: [{ importance: #HIGH, position: 30}]
+  OverallCustomerRating;
+
+  @EndUserText.label: 'First Name'
+  @UI.selectionField: [{position: 10 }]
+  @UI.fieldGroup: [{ qualifier: 'BasicInfoFieldGroup', position: 10, importance: #HIGH }]
+  @UI.lineItem: [{ importance: #HIGH, position: 40 }]
+  FirstName;
+
+
+  @EndUserText.label: 'Middle Name'
+  @UI.fieldGroup: [{ qualifier: 'BasicInfoFieldGroup', position: 20, importance: #HIGH }]
+  @UI.lineItem: [{ importance: #HIGH, position: 50 }]
+  MiddleName;
+
+  @EndUserText.label: 'Last Name'
+  @UI.fieldGroup: [{ qualifier: 'BasicInfoFieldGroup', position: 30, importance: #HIGH }]
+  @UI.lineItem: [{ importance: #LOW, position: 60 }]
+  LastName;
+
+  @UI.hidden: true
+  Salutation;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 70, type:#AS_CONTACT, value:'_Org' , label: 'Team' }]
+  @EndUserText.label: 'Team'
+  @UI.selectionField: [{ position: 20 }]
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.fieldGroup: [{ qualifier: 'BasicInfoFieldGroup', position: 40, importance: #HIGH }]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'zfe_i_empeorg_xx', element: 'Org' } }]
+  Organization;
+
+  @UI.lineItem: [{ importance: #MEDIUM, position: 80,criticality: 'Status',criticalityRepresentation: #WITH_ICON , value: 'Status'}]
+  @EndUserText.label: 'Status'
+  @UI.dataPoint: { title: 'Status' }
+  @UI.selectionField: [{position: 30 }]
+  @UI.textArrangement: #TEXT_ONLY
+  Status;
+
+  @UI.lineItem: [{ importance: #MEDIUM, position:90 }]
+  @EndUserText.label: 'Compliance'
+  CatCompliance;
+
+  @UI.lineItem: [{ importance: #MEDIUM, position: 100 }]
+  @EndUserText.label: 'Contact'
+  @UI.fieldGroup: [{ qualifier: 'ContactInfoFieldGroup', groupLabel: 'Contact Info' , position: 20, importance: #HIGH }]
+  Contact;
+
+  @UI.fieldGroup: [{ qualifier: 'ContactInfoFieldGroup', groupLabel: 'Contact Info', position: 30, importance: #HIGH }]
+  @UI.lineItem: [{ importance: #MEDIUM, position: 110 }]
+  @EndUserText.label: 'Email Address'
+  EmailAddress;
+
+  @UI.lineItem: [{ position: 10, importance:#HIGH }]
+  EmployeeImage;
+}

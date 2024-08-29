@@ -1,0 +1,123 @@
+@Metadata.layer: #CORE
+
+@UI: {
+    headerInfo: {
+        title: {
+            value: 'Serviceorder',
+            type: #STANDARD
+        },
+        description : {
+          value : 'Customername',
+          type : #STANDARD
+        },
+        typeName: 'Service Order',
+        typeNamePlural: 'Service Orders',
+        imageUrl: 'CustomerImage'
+    }
+}
+annotate entity zfe_c_empservices_xx with
+{
+  @UI.facet: [
+    {
+      label: 'General Information',
+      id: 'GeneralInfo',
+      type: #COLLECTION,
+      position: 10
+    },
+    {
+      label: 'Services Information',
+      type:            #FIELDGROUP_REFERENCE,
+      id: 'ServicesInfo',
+      purpose:         #STANDARD,
+      parentId:        'GeneralInfo',
+      targetQualifier: 'ServicesInfoFieldGroup'
+    }
+  ]
+
+  @UI.lineItem: [{ importance: #HIGH, position: 10 }]
+  CustomerImage;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 20 }]
+  @EndUserText.label: 'SO#'
+  @UI.selectionField: [{position: 10 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 10 }]
+  Serviceorder;
+
+  @UI.hidden: true
+  Employee;
+
+  @EndUserText.label: 'Customer'
+  @UI.lineItem: [{ importance: #HIGH, position: 30 }]
+  @UI.selectionField: [{position: 20 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 30 }]
+  CustomerName;
+
+  @EndUserText.label: 'Location'
+  @UI.lineItem: [{ importance: #MEDIUM, position: 60 }]
+  @UI.selectionField: [{position: 30 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 40 }]
+  Location;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 40 }]
+  @EndUserText.label: 'Service Description'
+  @UI.selectionField: [{position: 40 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 20 }]
+  ServiceDescription;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 90 }]
+  @EndUserText.label: 'SO Days'
+  @UI.selectionField: [{position: 50 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 50 }]
+  SOTotal;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 100 }]
+  @EndUserText.label: 'Onsite Days'
+  @UI.selectionField: [{position: 60 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 60 }]
+  SOOnsite;
+
+  @EndUserText.label: 'Remote Days'
+  @UI.lineItem: [{ importance: #HIGH, position: 110 }]
+  @UI.selectionField: [{position: 70 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 70 }]
+  SORemote;
+
+  @UI.hidden: true
+  SOUnits;
+
+  @UI.dataPoint: {
+  visualization: #RATING,
+  targetValue: 5,
+  title: 'Customer Rating'
+  }
+  @UI.lineItem: [{ importance: #HIGH, position: 50, type: #AS_DATAPOINT }]
+  @UI.selectionField: [{position: 80 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 80 }]
+  CustomerRating;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 120 }]
+  @UI.selectionField: [{position: 110 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 110 }]
+  Expenses;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 130, hidden: true }]
+  Currency;
+
+  @UI.lineItem: [{importance: #HIGH, position: 140 }]
+  @EndUserText.label: 'Expenses Status'
+  @UI.selectionField: [{position: 120 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 120 }]
+  ExpenseStatus;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 150 }]
+  @UI.selectionField: [{position: 130 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 130 }]
+  OnSiteBonus;
+
+  @UI.lineItem: [{ importance: #HIGH, position: 160 }]
+  @UI.selectionField: [{position: 140 }]
+  @UI.fieldGroup: [{ qualifier: 'ServicesInfoFieldGroup', position: 140 }]
+  TotalPerdiem;
+
+
+}
