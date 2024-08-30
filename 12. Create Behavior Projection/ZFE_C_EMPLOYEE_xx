@@ -1,0 +1,23 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZFE_C_EMPLOYEE_xx alias Employee
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _EmpServices { with draft; }
+}
+
+define behavior for ZFE_C_EMPSERVICES_xx alias EmployeeServices
+use etag
+{
+  use update;
+  //  use delete;
+
+  use association _Employee { with draft; }
+}
