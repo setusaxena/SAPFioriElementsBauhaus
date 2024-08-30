@@ -1,0 +1,98 @@
+managed implementation in class ZCL_FE_R_EMPLOYEE_xx unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZFE_R_EMPLOYEE_xx alias Employee
+persistent table zfe_employee_xx
+draft table zfe_d_emp_xx
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+
+{
+  field ( readonly )
+  Employee,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LastChangedBy,
+  LocalLastChangedAt;
+
+  field ( numbering : managed )
+  Employee;
+
+
+  create;
+  update;
+  delete;
+
+  association _EmpServices { create; with draft; }
+
+  mapping for zfe_employee_xx
+    {
+      Employee           = employee_id;
+      FirstName          = first_name;
+      MiddleName         = middle_name;
+      LastName           = last_name;
+      Salutation         = salutation;
+      EmployeeImage      = employee_image;
+      Organization       = organization;
+      Status             = status;
+      CatCompliance      = cat_compliance;
+      Contact            = contact;
+      EmailAddress       = email_address;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}
+
+define behavior for ZFE_R_EMPSERVICES_ZZ alias EmployeeServices
+persistent table zfe_empserv_xx
+draft table zfe_d_empserv_zz
+lock dependent by _Employee
+authorization dependent by _Employee
+etag master LocalLastChangedAt
+{
+
+  field ( readonly )
+  Employee,
+  Serviceorder,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LastChangedBy,
+  LocalLastChangedAt;
+
+  field ( numbering : managed )
+  Serviceorder;
+
+  update;
+  delete;
+
+  association _Employee { with draft; }
+
+  mapping for zfe_empserv_xx
+    {
+      ServiceOrder       = serviceorder_id;
+      Employee           = employee_id;
+      CustomerName       = customername;
+      Location           = location;
+      ServiceDescription = service_description;
+      SOOnsite           = so_onsite;
+      SORemote           = so_remote;
+      SOUnits            = so_units;
+      CustomerRating     = customer_rating;
+      CustomerImage      = customer_image;
+      Expenses           = expenses;
+      Currency           = currency;
+      ExpenseStatus      = expense_status;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

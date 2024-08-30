@@ -1,0 +1,10 @@
+@EndUserText.label: 'DLC to allow access to only NOK' 
+@MappingRole: true 
+define role ZFE_C_EMPLOYEE_xx { 
+  grant 
+    select 
+      on
+        ZFE_C_EMPLOYEE_xx 
+          where 
+           Currency = 'NOK';
+}
