@@ -1,0 +1,41 @@
+@AbapCatalog.sqlViewName: 'ZFEISOAPPSTATXX'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Svc Exp Pending App Status Basic Interface View for FE Demo'
+@Metadata.ignorePropagatedAnnotations: true
+define view zfe_i_soapprovalstat_xx as select from zfe_i_empservices_xx {
+    //zfe_i_empservices_xx
+    key Serviceorder,
+    key Employee,
+    CustomerName,
+    Location,
+    ServiceDescription,
+    SOTotal,
+    SOOnsite,
+    SORemote,
+    SOUnits,
+    CustomerRating,
+    CustomerImage,
+    CreatedAt,
+    CreatedBy,
+    LastChangedAt,
+    LastChangedBy,
+    Expenses,
+    
+    case
+    when Expenses > 2000
+    then 'Approval Required'
+    else 'No Approval Required' end as Approval,
+    
+    Currency,
+    ExpenseStatus,
+    OnSiteBonus,
+    TotalPerdiem,
+    /* Associations */
+    //zfe_i_empservices_xx
+    _Currency,
+    _Employee,
+    _ExpenseStatus,
+    _SOUnitOfMeasure
+}

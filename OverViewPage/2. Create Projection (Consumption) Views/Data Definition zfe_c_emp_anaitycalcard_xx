@@ -1,0 +1,32 @@
+@AbapCatalog.sqlViewName: 'ZFECEMPANACARDXX'
+@AbapCatalog.compiler.compareFilter: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Consumption View for Emp Analytical Card for OVP for FE Demo'
+@VDM.viewType: #CONSUMPTION
+@Metadata.allowExtensions: true
+@ObjectModel.representativeKey: 'employee'
+@ObjectModel.semanticKey: 'employee'
+
+define view zfe_c_emp_anaitycalcard_xx as select from zfe_i_employee_xx
+  association [0..1] to zfe_i_empstatus_xx as _EmployeeStatus on $projection.status = _EmployeeStatus.status
+  association [0..1] to zfe_i_empeorg_xx    as _EmployeeOrg    on $projection.organization = _EmployeeOrg.Org
+{
+  key Employee,
+      @ObjectModel.foreignKey.association: '_EmployeeStatus'
+      @EndUserText.label: 'Employee Status'
+      status,
+      @EndUserText.label: 'Employee Status'
+      _EmployeeStatus.statustext,
+      @ObjectModel.foreignKey.association: '_EmployeeOrg'
+      @EndUserText.label: 'Team'
+      organization,
+      @EndUserText.label: 'Team'
+      _EmployeeOrg.Description,
+      
+      
+       @DefaultAggregation: #SUM
+      cast( 1 as zeam_num_employees ) as TotalNumberOfEmployees,
+      
+      _EmployeeOrg,
+      _EmployeeStatus
+}

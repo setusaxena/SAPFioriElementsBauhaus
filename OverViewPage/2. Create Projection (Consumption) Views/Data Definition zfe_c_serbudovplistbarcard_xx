@@ -1,0 +1,26 @@
+@AbapCatalog.sqlViewName: 'ZFECSERBUGOVPXX'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Svc Budget Status Consumption View for List Card for FE Demo'
+@Metadata.allowExtensions: true
+define view zfe_c_serbudovplistbarcard_xx as select from zfe_r_empservices_xx {
+    //zfe_r_empservices_xx
+    key Serviceorder,
+    key Employee,
+    CustomerName,
+    ServiceDescription,
+    Currency,
+    ExpenseStatus,
+    Expenses,
+    @Semantics.quantity.unitOfMeasure: 'Percentage'
+    division(Expenses * 100, 5000, 2) as ExpenseBudgetUtilization,
+    @Semantics.unitOfMeasure: true
+    cast(' % ' as abap.unit(3))       as Percentage,
+    /* Associations */
+    //zfe_r_empservices_xx
+    _Currency,
+    _Employee,
+     _Employee.FirstName as EmployeeName,
+    _ExpenseStatus
+}

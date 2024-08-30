@@ -1,0 +1,44 @@
+@Metadata.layer: #CORE
+annotate view zfe_c_empservicesovptabcard_xx
+    with 
+{
+    //Z_FE_C_EmpServicesOVPTableCard
+    @UI.lineItem: [{
+    position: 40,
+    importance: #HIGH,
+    label: 'ID'
+    }]
+    
+    Employee;
+    @UI.lineItem: [{
+    position: 10,
+    importance: #HIGH,
+    label: 'Name'
+    }]
+    FirstName;
+    @UI.lineItem: [{
+    position: 20,
+    importance: #HIGH,
+    label: 'Services#'
+    }]
+    TotalServices;
+    /*
+    @UI.dataPoint: {
+    visualization: #RATING,
+    targetValue: 5,
+    title: 'Rating'
+    }
+    */
+    @UI.lineItem: [{
+    position: 30,
+    importance: #HIGH,
+    label: 'Overall Rating'
+    }]
+    OverallCustomerRating;
+    /*
+    employee_image;
+    organization;
+    */
+    /* Associations */
+    //zfe_c_empservicesovptabcard_xx
+}

@@ -1,0 +1,54 @@
+@Metadata.layer: #CORE
+
+@UI.chart: [
+  {
+    qualifier:  'ByEmployeeStatus',
+    title: 'Services by Employee Status',
+    chartType:  #DONUT,
+    dimensions: [ 'statustext' ] ,
+    measures:   [ 'TotalNumberOfEmployees'   ],
+    dimensionAttributes: [
+      {dimension: 'statustext', role: #CATEGORY}
+    ],
+    measureAttributes: [
+      {measure: 'TotalNumberOfEmployees', role: #AXIS_1, asDataPoint: true}
+    ]
+  },
+  {
+    qualifier:  'ByEmployeeOrg',
+    title: 'Services by Employee Organization',
+    chartType:  #DONUT,
+    dimensions: [  'Description' ] ,
+    measures:   [ 'TotalNumberOfEmployees'   ],
+    dimensionAttributes: [
+      {dimension: 'Description', role: #CATEGORY}
+    ],
+    measureAttributes: [
+      {measure: 'TotalNumberOfEmployees', role: #AXIS_1, asDataPoint: true}
+    ]
+  }
+  ]
+annotate view zfe_c_emp_anaitycalcard_xx
+    with 
+{
+    
+    //zfe_c_emp_anaitycalcard_xx
+    /*
+    employee;
+    status;
+    statustext;
+    organization;
+    Org;
+    
+    Need to add intent for nav
+    
+    */
+     @UI.dataPoint.visualization: #NUMBER
+     TotalNumberOfEmployees;
+     @UI.textArrangement: #TEXT_FIRST
+     status;
+     @UI.textArrangement: #TEXT_FIRST
+     organization;
+    /* Associations */
+    
+}

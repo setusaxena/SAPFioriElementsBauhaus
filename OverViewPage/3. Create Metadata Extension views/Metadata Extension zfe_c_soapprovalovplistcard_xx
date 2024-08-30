@@ -1,0 +1,46 @@
+@Metadata.layer: #CORE
+annotate view zfe_c_soapprovalovplistcard_xx
+   with 
+{
+//SO Expenses that need approval, i.e. value gt 2000EUR 
+ @UI.lineItem: [{
+      position: 10,
+      importance: #HIGH,
+      label: 'Document'
+      /*
+        type: #FOR_INTENT_BASED_NAVIGATION, 
+      semanticObjectAction: 'manage'
+      */
+  }]
+  
+  Serviceorder;
+  @UI.lineItem: [{
+    position: 20,
+    importance: #HIGH,
+    label: 'Description'
+  }]
+  ServiceDescription;
+
+  
+  @UI.lineItem: [{
+    position: 20,
+    importance: #HIGH,
+    label: 'Customer'
+  }]
+  CustomerName;
+  
+  @UI.lineItem: [{
+    position: 40,
+    importance: #HIGH,
+    label: 'Total Expense'
+  }]
+  Expenses;
+  /*
+  @UI.lineItem: [{
+    position: 50,
+    importance: #HIGH,
+    label: 'Onsite days'
+  }]
+  so_onsite;
+  */
+}

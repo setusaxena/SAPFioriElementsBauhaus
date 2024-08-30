@@ -1,0 +1,43 @@
+@Metadata.layer: #CORE
+annotate view zfe_c_serbudovplistbarcard_xx with
+{
+  @UI: {
+     selectionField: [{position: 10}],
+      lineItem: [{
+      position: 10,
+      type: #FOR_INTENT_BASED_NAVIGATION,
+      semanticObjectAction: 'manage'}]
+  }
+  Serviceorder;
+ 
+  @UI.lineItem: [{position: 10}]
+  CustomerName;
+ 
+  @UI.lineItem: [{position: 20}]
+  EmployeeName;
+  
+ 
+
+  @UI: {
+      lineItem: [
+          {
+          type: #AS_DATAPOINT,
+          importance: #HIGH,
+          position: 20
+          }],
+      dataPoint: {
+          title: 'Overall Price',
+          valueFormat.numberOfFractionalDigits: 2,
+          minimumValue: 0,
+          maximumValue: 100,
+          criticalityCalculation: 
+          {
+              improvementDirection: #MINIMIZE,
+              toleranceRangeHighValue: 75,
+              deviationRangeHighValue: 82
+          }
+      }
+  }
+  ExpenseBudgetUtilization;
+
+}

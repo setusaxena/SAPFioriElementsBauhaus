@@ -1,0 +1,51 @@
+@AbapCatalog.sqlViewName: 'ZFECEMPFLTROVPXX'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Consumption View for OVP Filter for FE Demo'
+@Metadata.ignorePropagatedAnnotations: true
+define view zfe_c_empfilterovp_xx as select from zfe_i_employee_xx  
+ association[0..*] to zfe_i_empservices_xx as _EmpServices
+  on $projection.Employee = _EmpServices.Employee
+{
+      //Z_FE_I_EMPLOYEE
+      @Consumption.filter.hidden: true
+      key Employee,
+      
+      @EndUserText.label: 'Employee Status'
+      @UI: {
+          selectionField: { exclude: false, position: 10 }
+        }
+      @Consumption: {
+        valueHelpDefinition: [{ entity: { name: 'Z_FE_C_EMPSTATUS_VH', element: 'empstatus'  }}]
+        }
+      cast('' as abap.char(1)) as status,
+      
+      @EndUserText.label: 'Service Expense Status'
+      @UI: {
+         selectionField: { exclude: false, position: 20 }
+       }
+      @Consumption: {
+        valueHelpDefinition: [{ entity: { name: 'Z_FE_C_SERVICES_VH', element: 'soexpensestatus'  }}]
+        }
+      cast('' as abap.char(1)) as expense_status,
+      
+      @EndUserText.label: 'Team'
+      @UI: {
+         selectionField: { exclude: false, position: 30 }
+       }
+      @Consumption: {
+        valueHelpDefinition: [{ entity: { name: 'Z_FE_C_EMPORG_VH', element: 'Org'  }}]
+        }
+      cast('' as abap.char(1)) as organization,
+        
+    
+      @Search.defaultSearchElement: true
+      @Search.ranking: #HIGH
+      @Search.fuzzinessThreshold: 0.7
+      first_name,
+
+        /* Associations */
+        //Z_FE_I_EMPLOYEE
+        _EmpServices
+}
