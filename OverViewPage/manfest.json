@@ -1,0 +1,248 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "com.sap.ovp.employeeovp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:ovp",
+      "version": "1.9.1",
+      "toolsId": "2e15c9b0-9bf1-409f-945c-75fc550c06d7"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZUI_C_OVP_EMPSERV_O2_XX/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZUI_C_OVP_EMPSERV_O2_XX_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZUI_C_OVP_EMPSERV_O2_XX_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZUI_C_OVP_EMPSERV_O2_XX_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/ZUI_C_OVP_EMPSERV_O2_XX_VAN.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ovp": {},
+        "sap.ui.rta": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.sap.ovp.employeeovp.i18n.i18n"
+        }
+      },
+      "mainModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    }
+  },
+  "sap.ovp": {
+    "globalFilterModel": "mainModel",
+    "globalFilterEntityType": "FilterBarType",
+    "containerLayout": "resizable",
+    "enableLiveFilter": true,
+    "considerAnalyticalParameters": false,
+    "cards": {
+      "card0": {
+        "template": "sap.ovp.cards.linklist",
+        "settings": {
+          "title": "Quick Links",
+          "subTitle": "Most commonly used actions",
+          "listFlavor": "standard",
+          "targetUri": "https://en.wikipedia.org/wiki/Bauhaus",
+          "defaultSpan": {
+            "rows": 20,
+            "cols": 1
+          },
+          "staticContent": [
+            {
+              "title": "Fiori App Reference Library",
+              "imageUri": "sap-icon://course-book",
+              "imageAltText": "Fiori App library",
+              "targetUri": "https://fioriappslibrary.hana.ondemand.com/sap/fix/externalViewer/#",
+              "openInNewWindow": true
+            },
+            {
+              "title": "Bauhaus SE",
+              "imageUri": "sap-icon://globe",
+              "imageAltText": "Bauhaus Wiki",
+              "targetUri": "https://en.wikipedia.org/wiki/Bauhaus",
+              "openInNewWindow": true
+            },
+            {
+              "title": "FLP on S4D",
+              "imageUri": "sap-icon://grid",
+              "imageAltText": "SAP Fiori Launchpad",
+              "targetUri": "https://s4d.sap.nordic.bauhaus.domains/sap/bc/ui2/flp?sap-client=020&sap-language=EN",
+              "openInNewWindow": true
+            },
+            {
+              "title": "Launchpad Designer on S4D",
+              "imageUri": "sap-icon://signature",
+              "imageAltText": "Launchpad Designer on S4D",
+              "targetUri": "https://s4d.sap.nordic.bauhaus.domains/sap/bc/ui5_ui5/sap/arsrvc_upb_admn/main.html?scope=CUST&sap-client=100&sap-language=EN",
+              "openInNewWindow": true
+            },
+            {
+              "title": "SAPUI5 Demo Kit",
+              "imageUri": "sap-icon://credit-card",
+              "imageAltText": "SAPUI5 Demo Kit",
+              "targetUri": "https://sapui5.hana.ondemand.com/",
+              "openInNewWindow": true
+            }
+          ]
+        }
+      },
+      "card00": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.charts.analytical",
+        "settings": {
+          "title": "{{card00_title}}",
+          "subTitle": "{{card00_subTitle}}",
+          "entitySet": "EmpServAnalyticalCard",
+          "tabs": [
+            {
+              "value": "Employee Status",
+              "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ByEmployeeStatus",
+              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+              "navigation": "dataPointNav"
+            },
+            {
+              "value": "Team",
+              "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ByEmployeeOrg",
+              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+              "navigation": "dataPointNav"
+            }
+          ]
+        }
+      },
+      "card01": {
+        "model": "mainModel",
+        "template": "sap.ovp.cards.list",
+        "settings": {
+          "title": "{{card01_title}}",
+          "subTitle": "{{card01_subTitle}}",
+          "entitySet": "SOApprovalListCard",
+          "listType": "extended",
+          "listFlavor": "standard",
+          "sortBy": "Expenses",
+          "sortOrder": "descending",
+          "addODataSelect": false,
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+        }
+      },
+			"card02": {
+				"model": "mainModel",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+					"title": "{{card02_title}}",
+					"subTitle": "{{card02_subTitle}}",
+					"entitySet": "EmpServListBarCard",
+					"sortBy": "Expenses",
+					"sortOrder": "descending",
+					"listType": "extended",
+					"listFlavor": "bar",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+				}
+			},
+      "card03": {
+				"model": "mainModel",
+				"template": "sap.ovp.cards.table",
+				"settings": {
+					"title": "{{card03_title}}",
+					"subTitle": "{{card03_subTitle}}",
+					"entitySet": "EmpServTabCard",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+					"sortBy": "OverallCustomerRating",
+					"sortOrder": "descending"
+				}
+			}
+    },
+    "chartSettings": {}
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  }
+}
